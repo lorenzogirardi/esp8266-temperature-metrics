@@ -1,68 +1,9 @@
-[Open in
-app](https://rsci.app.link/?%24canonical_url=https%3A%2F%2Fmedium.com%2Fp%2F4c38521725e9&~feature=LiOpenInAppButton&~channel=ShowPostUnderUser&~stage=mobileNavBar&source=post_page-----4c38521725e9--------------------------------)
 
-![Lorenzo](./Ambient%20sensor%20for%20mere%20mortal.%20In%20the%20home%20automation%20era,%20I%20was%20quite…%20_%20by%20Lorenzo%20_%20Jan,%202021%20_%20Medium_files/0_Z6pWQGfpu8V45IpS)
-
-[](https://medium.com/?source=post_page-----4c38521725e9--------------------------------)
-
-[Lorenzo](https://k8s-it.medium.com/?source=post_page-----4c38521725e9--------------------------------)
-
-[1
-Follower](https://k8s-it.medium.com/@k8s-it/followers?source=post_page-----4c38521725e9--------------------------------)
-
-[About](https://k8s-it.medium.com/about?source=post_page-----4c38521725e9--------------------------------)
-
-![Lorenzo](./Ambient%20sensor%20for%20mere%20mortal.%20In%20the%20home%20automation%20era,%20I%20was%20quite…%20_%20by%20Lorenzo%20_%20Jan,%202021%20_%20Medium_files/0_Z6pWQGfpu8V45IpS)
-
-[](https://medium.com/?source=post_page-----4c38521725e9--------------------------------)
-
-[1
-Follower](https://k8s-it.medium.com/@k8s-it/followers?source=post_page-----4c38521725e9--------------------------------)
-
-[About](https://k8s-it.medium.com/about?source=post_page-----4c38521725e9--------------------------------)
-
-[Open in
-app](https://rsci.app.link/?%24canonical_url=https%3A%2F%2Fmedium.com%2Fp%2F4c38521725e9&~feature=LiOpenInAppButton&~channel=ShowPostUnderUser&~stage=mobileNavBar&source=post_page-----4c38521725e9--------------------------------)
-
-[](https://medium.com/?source=post_page-----4c38521725e9--------------------------------)
-
-Responses {.av .ic .tg .de .da .ee}
----------
-
-####  {.av .b .aw .ax .ee}
-
-![Lorenzo](./Ambient%20sensor%20for%20mere%20mortal.%20In%20the%20home%20automation%20era,%20I%20was%20quite…%20_%20by%20Lorenzo%20_%20Jan,%202021%20_%20Medium_files/0_Z6pWQGfpu8V45IpS)
-
-#### Lorenzo {.av .b .aw .ax .ee}
-
-What are your thoughts?﻿\
-
-Cancel
-
-Respond
-
-#### There are currently no responses for this story. {.av .b .dd .de .ay}
-
-#### Be the first to respond. {.av .b .dd .de .ay}
-
-Ambient sensor for mere mortal {#f391 .fo .da .fp .av .cp .fq .fr .fs .ft .fu .fv .fw .fx .fy .fz .ga .gb .gc .gd .ge .gf .gg .gh .gi .gj .gk .ee}
-==============================
-
-[![Lorenzo](./Ambient%20sensor%20for%20mere%20mortal.%20In%20the%20home%20automation%20era,%20I%20was%20quite…%20_%20by%20Lorenzo%20_%20Jan,%202021%20_%20Medium_files/0_Z6pWQGfpu8V45IpS(1))](https://k8s-it.medium.com/?source=post_page-----4c38521725e9--------------------------------)
-
-[](https://k8s-it.medium.com/?source=post_page-----4c38521725e9--------------------------------)
-
-#### Lorenzo {.av .b .aw .ax .az}
-
-[](https://k8s-it.medium.com/ambient-sensor-for-mere-mortal-4c38521725e9?source=post_page-----4c38521725e9--------------------------------)
-
-#### Just now·4 min read {.av .b .aw .ax .ay}
 
 In the home automation era, I was quite curious to understand how is
 working a simple thermal sensor
 
-WHAT WE NEED ? {#30ae .ia .ib .fp .av .ic .id .ie .hk .if .ig .ih .hn .ii .ij .ik .il .im .in .io .ip .iq .ir .is .it .iu .iv .ee data-selectable-paragraph=""}
-==============
+WHAT WE NEED ? 
 
 -   ESP8266
 -   DHT22
@@ -83,8 +24,7 @@ with Lua instead it was quite simple create this kind of functionality.
 
 The hardware platform is really nice and simple
 
-ESP8266 {#bf66 .jp .ib .fp .av .ic .jq .jr .js .if .jt .ju .jv .ii .jw .jx .jy .im .jz .ka .kb .iq .kc .kd .ke .iu .kf .ee data-selectable-paragraph=""}
--------
+ESP8266 
 
 ![Image for
 post](./Ambient%20sensor%20for%20mere%20mortal.%20In%20the%20home%20automation%20era,%20I%20was%20quite…%20_%20by%20Lorenzo%20_%20Jan,%202021%20_%20Medium_files/0_rCmhhym0qF3LkzXC.png)
@@ -140,8 +80,7 @@ with a command like this\
 
 Now…. it’s time to create the Lua script
 
-Configuration {#6338 .ia .ib .fp .av .ic .id .ie .hk .if .ig .ih .hn .ii .ij .ik .il .im .in .io .ip .iq .ir .is .it .iu .iv .ee data-selectable-paragraph=""}
-=============
+Configuration
 
 This is working since 2016 so i think we can consider stable 😁
 
@@ -149,8 +88,7 @@ This is working since 2016 so i think we can consider stable 😁
 local SSID = "name wifi"local SSID_PASSWORD = "password wifi"local DEVICE = "name device"local temperature = 20.0wifi.setmode(wifi.STATION)wifi.sta.config(SSID,SSID_PASSWORD)wifi.sta.autoconnect(1)local HOST = "server database"local URI = "/write?db=collectd"function build_post_request(host, uri, data_table)     local data = data_table.Data_type .. ",device=" .. data_table.Device .. " " .. "value=" .. data_table.Value     --for param,value in pairs(data_table) do    --      data = data .. param.."="..value.."&"    -- end    print(data)     request = "POST "..uri.." HTTP/1.1\r\n"..     "Host: "..host.."\r\n"..     "Connection: close\r\n"..     "Content-Type: application/x-www-form-urlencoded\r\n"..     "Content-Length: "..string.len(data).."\r\n"..     "\r\n"..     data     print(request)     return requestendlocal function display(sck,response)     print(response)end-- When using send_sms: the "from" number HAS to be your twilio number.-- If you have a free twilio account the "to" number HAS to be your twilio verified number.-- The numbers MUST include the country code.-- DO NOT add the "+" sign.local function send_data(data_type,device,value)     local data = {      Data_type = data_type,      Device = device,      Value = value     }     socket = net.createConnection(net.TCP,0)     socket:on("receive",display)     socket:connect(8086,HOST)     socket:on("connection",function(sck)          local post_request = build_post_request(HOST,URI,data)          sck:send(post_request)     end)endfunction check_wifi() local ip = wifi.sta.getip() if(ip==nil) then   print("Connecting...") else  tmr.stop(0)  print("Connected to AP!")  print(ip)  --send_data("15551234567","12223456789","Hello from your ESP8266")  local t, h, d = getTempHumi()  print("Temp:"..t .." C\n")  print("Humi:"..h .." RH\n")  print("Dew:"..d .." DP\n")  send_data("temperature", DEVICE, t)  send_data("humidity", DEVICE, h)  send_data("dew_point", DEVICE, d)  tmr.alarm(0,30000,1,check_wifi) endendtmr.alarm(0,5000,1,check_wifi)function getTempHumi()    pin = 4    local status,temp,humi,temp_decimial,humi_decimial = dht.read(pin)    if( status == dht.OK ) then    -- Float firmware using this example      print("DHT Temperature:"..temp..";".."Humidity:"..humi)    elseif( status == dht.ERROR_CHECKSUM ) then      print( "DHT Checksum error." );    elseif( status == dht.ERROR_TIMEOUT ) then      print( "DHT Time out." );    end    local dewpoint= (humi/100)^(1/8) * (112 + (0.9 * temp)) - 112 + (0.1 * temp)    return temp, humi, (string.format("%.1f", dewpoint))end
 ```
 
-Customizations {#280d .jp .ib .fp .av .ic .jq .jr .js .if .jt .ju .jv .ii .jw .jx .jy .im .jz .ka .kb .iq .kc .kd .ke .iu .kf .ee data-selectable-paragraph=""}
---------------
+Customizations 
 
 local SSID = “wifi name” \
 local SSID\_PASSWORD = “wifi password”\
@@ -173,8 +111,7 @@ post](./Ambient%20sensor%20for%20mere%20mortal.%20In%20the%20home%20automation%2
 ![Image for
 post](https://miro.medium.com/max/2636/0*_U8hAQPTGsW7oDoZ.png)
 
-Results {#f415 .ia .ib .fp .av .ic .id .ie .hk .if .ig .ih .hn .ii .ij .ik .il .im .in .io .ip .iq .ir .is .it .iu .iv .ee data-selectable-paragraph=""}
-=======
+Results 
 
 [https://services.k8s.it/grafana/d/000000079/temperature?viewPanel=5&orgId=2&refresh=1m](https://services.k8s.it/grafana/d/000000079/temperature?viewPanel=5&orgId=2&refresh=1m)
 
